@@ -1,0 +1,75 @@
+insert into 
+	public.uf(nome, sigla) 
+values('Acre', 'AC');
+
+insert into 
+	public.cidade (id_uf, nome) 
+values
+	(2, 'Curitiba')
+
+
+delete from
+	puvlic.cidade
+	id not in (select id_uf from public.cidade)
+
+insert into 
+	public.cidade (id_uf, nome) 
+values
+	(3, 'São Paulo')
+
+
+update public.cidade set nome = 'Lunardelli', sigla = 'PR' where id = 8
+ 
+ 
+
+select 
+	cid.id,
+	cid.nome,
+	uf.nome
+from
+	public.cidade cid,
+	public.uf uf
+where
+	uf.id = cid.id_uf
+order by
+	cid.id
+
+select count (nome), id_uf
+from public.cidade
+group by id_uf
+
+
+ALTER TABLE public.endereco ADD COMERCIAL varchar(100) NOT NULL, ADD RESIDENCIAL(100) 
+
+insert into 
+	public.pessoa (nome) 
+values
+	('Daniela')
+
+ insert into 
+	public.pessoa (nome) 
+values
+	('Daniela')
+
+insert into 
+	public.pessoa (nome) 
+values
+	('Daniela')
+
+
+ select 
+	psa.nome,
+	uf.nome,
+	cid.nome
+from
+	endereco edr,
+	pessoa psa,
+	cidade cid,
+	uf uf
+where
+	edr.id_pessoa = psa.id
+	and edr.id_cidade = cid.id
+	and cid.id_uf = uf.id
+order by
+	psa.nome
+
